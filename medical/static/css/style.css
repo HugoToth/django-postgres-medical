@@ -1,0 +1,113 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling - RESPONSIVE */
+.form-control, .form-select {
+    border-radius: 0.5rem;
+}
+
+/* Auth forms - responsive widths */
+.auth-card {
+    width: 100%;
+    max-width: 500px;  /* Maximum width */
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        max-width: 100%;
+        margin: 0 1rem;
+    }
+}
+
+.btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+}
+
+/* Navigation badge */
+.navbar .badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.5rem;
+    margin-left: 0.3rem;
+}
+
+/* Table styling (for future CRUD pages) */
+.table-hover tbody tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+/* Alert customization */
+.alert {
+    border-radius: 0.5rem;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Login/Register cards */
+.card.shadow {
+    border: none;
+}
+
+/* Jumbotron custom style */
+.jumbotron {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.jumbotron h1, .jumbotron p {
+    color: white;
+}
+
+/* Django form errors */
+.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0.25rem 0 0 0;
+    color: #dc3545;
+    font-size: 0.875rem;
+}
+
+.errorlist li {
+    margin-bottom: 0.25rem;
+}
+
+/* Help text styling */
+.helptext {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* Make Django forms use Bootstrap classes */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+}
