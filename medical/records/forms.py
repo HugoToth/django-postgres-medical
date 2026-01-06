@@ -58,8 +58,8 @@ class ConsultatieForm(forms.ModelForm):
             'medic': forms.Select(attrs={'class': 'form-control'}),
             'medicament': forms.Select(attrs={'class': 'form-control'}),
             'Data': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'Diagnostic': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Diagnostic'}),
-            'DozaMedicament': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ex: 2 pastile/zi'}),
+            'Diagnostic': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'DozaMedicament': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
             'pacient': 'Pacient',

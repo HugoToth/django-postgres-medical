@@ -30,6 +30,4 @@ urlpatterns = [
     
     # MedicPacient URLs
     path('medicpacient/', views.medicpacient_list, name='medicpacient_list'),
-    path('medicpacient/create/', views.medicpacient_create, name='medicpacient_create'),
-    path('medicpacient/<int:pk>/delete/', views.medicpacient_delete, name='medicpacient_delete'),
 ]

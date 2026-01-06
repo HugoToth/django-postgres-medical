@@ -85,3 +85,13 @@ class Consultatie(models.Model):
     
     def __str__(self):
         return f"Consultatie {self.ConsultatieID}: {self.pacient} - {self.Data}"
+    
+    def save(self, *args, **kwargs):
+        """Override save to automatically create MedicPacient relationship if it doesn't exist"""
+        super().save(*args, **kwargs)  # Save the consultation first
+        
+        # Create MedicPacient relationship if it doesn't exist
+        MedicPacient.objects.get_or_create(
+            medic=self.medic,
+            pacient=self.pacient
+        )

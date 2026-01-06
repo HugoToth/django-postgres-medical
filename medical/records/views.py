@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from django.urls import reverse
 from .models import Medic, Pacient, Medicament, MedicPacient, Consultatie
-from .forms import MedicForm, PacientForm, MedicamentForm, ConsultatieForm, MedicPacientForm
+from .forms import MedicForm, PacientForm, MedicamentForm, ConsultatieForm
 
 # Helper function to check if user is admin
 def is_admin(user):
@@ -234,34 +234,12 @@ def consultatie_delete(request, pk):
 @login_required
 def medicpacient_list(request):
     relations = MedicPacient.objects.select_related('medic', 'pacient').all()
+    
+    # Add consultation count for each relation
+    for relation in relations:
+        relation.consultation_count = Consultatie.objects.filter(
+            medic=relation.medic,
+            pacient=relation.pacient
+        ).count()
+    
     return render(request, 'medicpacient_list.html', {'relations': relations})
-
-@login_required
-def medicpacient_create(request):
-    if request.method == 'POST':
-        form = MedicPacientForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Relație adăugată cu succes!')
-            return redirect('records:medicpacient_list')
-    else:
-        form = MedicPacientForm()
-    return render(request, 'generic_form.html', {
-        'form': form,
-        'action': 'Adăugare',
-        'entity_name': 'Relație Medic-Pacient',
-        'cancel_url': reverse('records:medicpacient_list')
-    })
-
-@login_required
-@user_passes_test(is_admin)
-def medicpacient_delete(request, pk):
-    relation = get_object_or_404(MedicPacient, pk=pk)
-    if request.method == 'POST':
-        relation.delete()
-        messages.success(request, 'Relație ștearsă cu succes!')
-        return redirect('records:medicpacient_list')
-    return render(request, 'confirm_delete.html', {
-        'object': relation,
-        'cancel_url': reverse('records:medicpacient_list')
-    })

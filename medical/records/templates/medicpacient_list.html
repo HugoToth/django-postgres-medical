@@ -3,11 +3,12 @@
 {% block title %}Relații Medic-Pacient{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
+<div class="mb-4">
     <h2>🔗 Relații Medic-Pacient</h2>
-    <a href="{% url 'records:medicpacient_create' %}" class="btn btn-success">
-        ➕ Adaugă Relație
-    </a>
+    <div class="alert alert-info mt-3">
+        <strong>ℹ️ Notă:</strong> Aceste relații sunt generate automat din consultații. 
+        Pentru a adăuga o relație nouă, creați o <a href="{% url 'records:consultatie_create' %}">consultație nouă</a>.
+    </div>
 </div>
 
 {% if relations %}
@@ -15,26 +16,24 @@
     <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
                 <th>Medic</th>
+                <th>Specializare</th>
                 <th>Pacient</th>
-                <th>Acțiuni</th>
+                <th>CNP</th>
+                <th>Nr. Consultații</th>
             </tr>
         </thead>
         <tbody>
             {% for relation in relations %}
             <tr>
-                <td>{{ relation.id }}</td>
                 <td>Dr. {{ relation.medic.NumeMedic }} {{ relation.medic.PrenumeMedic }}</td>
-                <td>{{ relation.pacient.NumePacient }} {{ relation.pacient.PrenumePacient }} (CNP: {{ relation.pacient.CNP }})</td>
+                <td>{{ relation.medic.Specializare|default:"—" }}</td>
+                <td>{{ relation.pacient.NumePacient }} {{ relation.pacient.PrenumePacient }}</td>
+                <td>{{ relation.pacient.CNP }}</td>
                 <td>
-                    {% if user.is_superuser %}
-                    <a href="{% url 'records:medicpacient_delete' relation.id %}" class="btn btn-sm btn-danger">
-                        🗑️ Șterge
-                    </a>
-                    {% else %}
-                    <span class="text-muted">—</span>
-                    {% endif %}
+                    <span class="badge bg-primary">
+                        {{ relation.consultation_count }}
+                    </span>
                 </td>
             </tr>
             {% endfor %}
@@ -42,8 +41,8 @@
     </table>
 </div>
 {% else %}
-<div class="alert alert-info">
-    Nu există relații în baza de date. <a href="{% url 'records:medicpacient_create' %}">Adaugă prima relație</a>
+<div class="alert alert-warning">
+    Nu există relații medic-pacient. Creează o <a href="{% url 'records:consultatie_create' %}">consultație</a> pentru a genera prima relație.
 </div>
 {% endif %}
 
