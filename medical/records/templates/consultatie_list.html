@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>📋 Lista Consultații</h2>
+    <h2>Lista Consultații</h2>
     <a href="{% url 'records:consultatie_create' %}" class="btn btn-success">
         ➕ Adaugă Consultație
     </a>
@@ -12,7 +12,7 @@
 
 {% if consultatii %}
 <div class="table-responsive">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover sortable-table">
         <thead class="table-dark">
             <tr>
                 <th>ID</th>
@@ -22,7 +22,7 @@
                 <th>Data</th>
                 <th>Diagnostic</th>
                 <th>Doza</th>
-                <th>Acțiuni</th>
+                <th data-sort-method="none">Acțiuni</th>
             </tr>
         </thead>
         <tbody>
@@ -37,11 +37,11 @@
                 <td>{{ consultatie.DozaMedicament|default:"—" }}</td>
                 <td>
                     <a href="{% url 'records:consultatie_update' consultatie.ConsultatieID %}" class="btn btn-sm btn-warning">
-                        ✏️ Modifică
+                        Modifică
                     </a>
                     {% if user.is_superuser %}
                     <a href="{% url 'records:consultatie_delete' consultatie.ConsultatieID %}" class="btn btn-sm btn-danger">
-                        🗑️ Șterge
+                        Șterge
                     </a>
                     {% endif %}
                 </td>

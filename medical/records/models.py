@@ -69,7 +69,7 @@ class MedicPacient(models.Model):
 
 
 class Consultatie(models.Model):
-    """Enhanced junction table: Pacient <-> Medicament with additional fields"""
+    """Junction table: Pacient <-> Medicament with additional fields"""
     ConsultatieID = models.AutoField(primary_key=True)
     pacient = models.ForeignKey(Pacient, on_delete=models.CASCADE)
     medicament = models.ForeignKey(Medicament, on_delete=models.CASCADE)

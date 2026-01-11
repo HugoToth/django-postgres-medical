@@ -6,9 +6,9 @@ class MedicForm(forms.ModelForm):
         model = Medic
         fields = ['NumeMedic', 'PrenumeMedic', 'Specializare']
         widgets = {
-            'NumeMedic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nume'}),
-            'PrenumeMedic': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Prenume'}),
-            'Specializare': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Specializare'}),
+            'NumeMedic': forms.TextInput(attrs={'class': 'form-control'}),
+            'PrenumeMedic': forms.TextInput(attrs={'class': 'form-control'}),
+            'Specializare': forms.TextInput(attrs={'class': 'form-control'}),
         }
         labels = {
             'NumeMedic': 'Nume',
@@ -22,10 +22,10 @@ class PacientForm(forms.ModelForm):
         model = Pacient
         fields = ['CNP', 'NumePacient', 'PrenumePacient', 'Adresa', 'Asigurare']
         widgets = {
-            'CNP': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '13 digits', 'maxlength': '13'}),
-            'NumePacient': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nume'}),
-            'PrenumePacient': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Prenume'}),
-            'Adresa': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Adresa'}),
+            'CNP': forms.TextInput(attrs={'class': 'form-control', 'maxlength': '13'}),
+            'NumePacient': forms.TextInput(attrs={'class': 'form-control'}),
+            'PrenumePacient': forms.TextInput(attrs={'class': 'form-control'}),
+            'Adresa': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
             'Asigurare': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
         labels = {
@@ -42,7 +42,7 @@ class MedicamentForm(forms.ModelForm):
         model = Medicament
         fields = ['Denumire']
         widgets = {
-            'Denumire': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Denumire medicament'}),
+            'Denumire': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'medicament'}),
         }
         labels = {
             'Denumire': 'Denumire',

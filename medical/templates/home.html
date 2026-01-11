@@ -1,21 +1,21 @@
 {% extends 'layout.html' %}
 
-{% block title %}Home - Medical System{% endblock %}
+{% block title %}Acasă - Sistem Medical{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-12">
         <div class="jumbotron bg-light p-5 rounded">
-            <h1 class="display-4">Welcome, {{ user.username }}! 👋</h1>
+            <h1 class="display-4">Bun venit, {{ user.username }}! 👋</h1>
             <p class="lead">
                 {% if user.is_superuser %}
-                    You are logged in as an <strong>Administrator</strong>. You have full access to all features including delete operations.
+                    Ești autentificat ca <strong>Administrator</strong>. Ai acces complet la toate funcționalitățile, inclusiv operațiunile de ștergere.
                 {% else %}
-                    You are logged in as a <strong>Client</strong>. You can view, add, and modify records.
+                    Ești autentificat ca <strong>Client</strong>. Poți vizualiza, adăuga și modifica înregistrări.
                 {% endif %}
             </p>
             <hr class="my-4">
-            <p>Manage medical records, patients, doctors, medications, and consultations.</p>
+            <p>Gestionează evidența medicală, pacienții, medicii, medicamentele și consultațiile.</p>
         </div>
     </div>
 </div>
@@ -25,10 +25,10 @@
     <div class="col-md-4 mb-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">👨‍⚕️ Medici</h5>
-                <p class="card-text">View and manage doctors' information.</p>
-                <a href="{% url 'records:medic_list' %}" class="btn btn-primary">View Medici</a>
-                <a href="{% url 'records:medic_create' %}" class="btn btn-success">Add New</a>
+                <h5 class="card-title">Medici</h5>
+                <p class="card-text">Vizualizează și gestionează informațiile medicilor.</p>
+                <a href="{% url 'records:medic_list' %}" class="btn btn-primary">Vezi Medicii</a>
+                <a href="{% url 'records:medic_create' %}" class="btn btn-success">Adaugă Nou</a>
             </div>
         </div>
     </div>
@@ -37,10 +37,10 @@
     <div class="col-md-4 mb-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">🏥 Pacienti</h5>
-                <p class="card-text">View and manage patient records.</p>
-                <a href="{% url 'records:pacient_list' %}" class="btn btn-primary">View Pacienti</a>
-                <a href="{% url 'records:pacient_create' %}" class="btn btn-success">Add New</a>
+                <h5 class="card-title">Pacienți</h5>
+                <p class="card-text">Vizualizează și gestionează evidența pacienților.</p>
+                <a href="{% url 'records:pacient_list' %}" class="btn btn-primary">Vezi Pacienții</a>
+                <a href="{% url 'records:pacient_create' %}" class="btn btn-success">Adaugă Nou</a>
             </div>
         </div>
     </div>
@@ -49,10 +49,10 @@
     <div class="col-md-4 mb-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">💊 Medicamente</h5>
-                <p class="card-text">View and manage medications.</p>
-                <a href="{% url 'records:medicament_list' %}" class="btn btn-primary">View Medicamente</a>
-                <a href="{% url 'records:medicament_create' %}" class="btn btn-success">Add New</a>
+                <h5 class="card-title">Medicamente</h5>
+                <p class="card-text">Vizualizează și gestionează medicamentele.</p>
+                <a href="{% url 'records:medicament_list' %}" class="btn btn-primary">Vezi Medicamentele</a>
+                <a href="{% url 'records:medicament_create' %}" class="btn btn-success">Adaugă Nou</a>
             </div>
         </div>
     </div>
@@ -63,10 +63,10 @@
     <div class="col-md-6 mb-3">
         <div class="card border-info">
             <div class="card-body">
-                <h5 class="card-title">📋 Consultatii</h5>
-                <p class="card-text">Manage patient consultations with medications and diagnostics.</p>
-                <a href="{% url 'records:consultatie_list' %}" class="btn btn-info">View Consultatii</a>
-                <a href="{% url 'records:consultatie_create' %}" class="btn btn-outline-info">Add New</a>
+                <h5 class="card-title">📋 Consultații</h5>
+                <p class="card-text">Gestionează consultațiile pacienților cu medicamente și diagnostice.</p>
+                <a href="{% url 'records:consultatie_list' %}" class="btn btn-info">Vezi Consultațiile</a>
+                <a href="{% url 'records:consultatie_create' %}" class="btn btn-outline-info">Adaugă</a>
             </div>
         </div>
     </div>
@@ -75,9 +75,9 @@
     <div class="col-md-6 mb-3">
         <div class="card border-secondary">
             <div class="card-body">
-                <h5 class="card-title">🔗 Medic-Pacient Relations</h5>
-                <p class="card-text">Manage relationships between doctors and patients.</p>
-                <a href="{% url 'records:medicpacient_list' %}" class="btn btn-secondary">View Relations</a>
+                <h5 class="card-title">🔗 Relații Medic-Pacient</h5>
+                <p class="card-text">Vizualizează relațiile între medici și pacienți.</p>
+                <a href="{% url 'records:medicpacient_list' %}" class="btn btn-secondary">Vezi Relațiile</a>
             </div>
         </div>
     </div>
@@ -87,15 +87,15 @@
 <div class="row mt-4">
     <div class="col-12">
         <div class="alert alert-warning" role="alert">
-            <h5 class="alert-heading">⚠️ Administrator Privileges</h5>
-            <p>As an administrator, you can:</p>
+            <h5 class="alert-heading">⚠️ Privilegii de Administrator</h5>
+            <p>Ca administrator, poți:</p>
             <ul>
-                <li>Delete any record from the database</li>
-                <li>Access the Django Admin Panel</li>
-                <li>Manage all users and permissions</li>
+                <li>Șterge orice înregistrare din baza de date</li>
+                <li>Accesa Panoul de Administrare Django</li>
+                <li>Gestiona toți utilizatorii și permisiunile</li>
             </ul>
             <hr>
-            <a href="{% url 'admin:index' %}" class="btn btn-warning">Go to Admin Panel</a>
+            <a href="{% url 'admin:index' %}" class="btn btn-warning">Accesează Panoul Admin</a>
         </div>
     </div>
 </div>

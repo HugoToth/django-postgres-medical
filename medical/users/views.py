@@ -9,7 +9,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.success(request, f'Welcome back, {user.username}!')
+            messages.success(request, f'Bine ai revenit, {user.username}!')
             return redirect('home')
     else:
         form = AuthenticationForm()
@@ -18,7 +18,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.success(request, 'You have been logged out successfully')
+    messages.success(request, 'Te-ai deconectat cu succes')
     return redirect('users:login')
 
 def register_view(request):
@@ -27,7 +27,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}! You can now log in.')
+            messages.success(request, f'Cont creat pentru {username}! Poți să te autentifici acum.')
             return redirect('users:login')
     else:
         form = UserCreationForm()

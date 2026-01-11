@@ -1,28 +1,28 @@
 {% extends 'layout.html' %}
 
-{% block title %}Login - Medical System{% endblock %}
+{% block title %}Autentificare - Sistem Medical{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card shadow auth-card">
             <div class="card-body p-4 p-md-5">
-                <h2 class="text-center mb-4">🔐 Login</h2>
+                <h2 class="text-center mb-4">Autentificare</h2>
                 
                 <form method="post" novalidate>
                     {% csrf_token %}
                     {{ form.as_p }}
                     
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Autentifică-te</button>
                     </div>
                 </form>
                 
                 <hr class="my-4">
                 
                 <div class="text-center">
-                    <p class="mb-0">Don't have an account?</p>
-                    <a href="{% url 'users:register' %}" class="btn btn-outline-secondary mt-2 w-100">Register Here</a>
+                    <p class="mb-0">Nu ai un cont?</p>
+                    <a href="{% url 'users:register' %}" class="btn btn-outline-secondary mt-2 w-100">Înregistrează-te aici</a>
                 </div>
             </div>
         </div>

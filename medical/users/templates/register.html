@@ -1,13 +1,13 @@
 {% extends 'layout.html' %}
 
-{% block title %}Register - Medical System{% endblock %}
+{% block title %}Înregistrare - Sistem Medical{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-12">
         <div class="card shadow auth-card">
             <div class="card-body p-4 p-md-5">
-                <h2 class="text-center mb-4">📋 Register</h2>
+                <h2 class="text-center mb-4">Înregistrare</h2>
                 
                 <form method="post" novalidate>
                     {% csrf_token %}
@@ -15,21 +15,21 @@
                     
                     <div class="alert alert-info mt-3">
                         <small>
-                            <strong>Note:</strong> New users will be registered as <strong>Clients</strong>. 
-                            Only administrators can delete records.
+                            <strong>Notă:</strong> Utilizatorii noi vor fi înregistrați ca <strong>Clienți</strong>. 
+                            Doar administratorii pot șterge înregistrări.
                         </small>
                     </div>
                     
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-success btn-lg">Create Account</button>
+                        <button type="submit" class="btn btn-success btn-lg">Creează Cont</button>
                     </div>
                 </form>
                 
                 <hr class="my-4">
                 
                 <div class="text-center">
-                    <p class="mb-0">Already have an account?</p>
-                    <a href="{% url 'users:login' %}" class="btn btn-outline-primary mt-2 w-100">Login Here</a>
+                    <p class="mb-0">Ai deja un cont?</p>
+                    <a href="{% url 'users:login' %}" class="btn btn-outline-primary mt-2 w-100">Autentifică-te aici</a>
                 </div>
             </div>
         </div>
